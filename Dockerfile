@@ -1,9 +1,20 @@
-FROM python:3.8
+FROM python:3.12-slim
+
 WORKDIR /app
 
-COPY . /app
+# Necesario para el healthcheck (curl -f http://localhost:5050/health)
+RUN apt-get update && apt-get install -y --no-install-recommends curl \
+    && rm -rf /var/lib/apt/lists/*
 
-RUN pip install Flask==1.1.2 PyMySQL==0.9.3
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+# Ejecutar como usuario no-root (buena práctica de seguridad)
+RUN useradd -m appuser
+USER appuser
 
 EXPOSE 5050
+
 CMD ["python", "app.py"]
