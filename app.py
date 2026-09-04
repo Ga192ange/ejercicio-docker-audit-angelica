@@ -42,7 +42,7 @@ def health_check():
 
 if __name__ == "__main__":
     app.run(
-        host=os.getenv("HOST", "0.0.0.0"),
-        port=int(os.getenv("PORT", "5050")),
-        debug=False
-    )
+    host=os.getenv("HOST", "0.0.0.0"),  # nosec B104 - Necesario para exponer el servicio fuera del contenedor Docker; el acceso se restringe vía red de Docker/firewall del host
+    port=int(os.getenv("PORT", "5050")),
+    debug=False
+)

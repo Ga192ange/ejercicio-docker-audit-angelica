@@ -44,3 +44,10 @@ bandit -r . -x ./venv -f txt -o auditoria_bandit.txt
 | Herramienta | Resultado                   | Problemas encontrados |
 | ----------- | --------------------------- | --------------------: |
 | Bandit      | Sin problemas identificados |                     0 |
+
+
+## Auditoría de Seguridad
+
+| Hallazgo | Severidad | Herramienta | Ubicación | Estado | Justificación |
+|---|---|---|---|---|---|
+| Binding a todas las interfaces (0.0.0.0) | Media | Bandit (B104) | app.py:45 | Aceptado con excepción | Necesario para exponer el servicio desde el contenedor Docker al host; el acceso real se controla vía mapeo de puertos y configuración de red/firewall |
