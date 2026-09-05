@@ -51,3 +51,13 @@ bandit -r . -x ./venv -f txt -o auditoria_bandit.txt
 | Hallazgo | Severidad | Herramienta | Ubicación | Estado | Justificación |
 |---|---|---|---|---|---|
 | Binding a todas las interfaces (0.0.0.0) | Media | Bandit (B104) | app.py:45 | Aceptado con excepción | Necesario para exponer el servicio desde el contenedor Docker al host; el acceso real se controla vía mapeo de puertos y configuración de red/firewall |
+
+
+
+## Enlaces del Despliegue
+
+| Servicio | URL |
+|---|---|
+| API | [https://apiangelica1.duckdns.org](https://apiangelica1.duckdns.org) |
+| Dozzle (logs de contenedores) | [https://dozzleangelica2.duckdns.org](https://dozzleangelica2.duckdns.org) |
+| Uptime Kuma (monitoreo) | [https://kumaangelica3.duckdns.org](https://kumaangelica3.duckdns.org) |
