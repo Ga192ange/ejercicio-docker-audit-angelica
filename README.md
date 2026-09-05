@@ -58,6 +58,6 @@ bandit -r . -x ./venv -f txt -o auditoria_bandit.txt
 
 | Servicio | URL |
 |---|---|
-| API | [https://apiangelica1.duckdns.org](https://apiangelica1.duckdns.org) |
-| Dozzle (logs de contenedores) | [https://dozzleangelica2.duckdns.org](https://dozzleangelica2.duckdns.org) |
-| Uptime Kuma (monitoreo) | [https://kumaangelica3.duckdns.org](https://kumaangelica3.duckdns.org) |
+| API | "https://apiangelica1.duckdns.org/" |
+| Dozzle (logs de contenedores) | "https://dozzleangelica2.duckdns.org/" |
+| Uptime Kuma (monitoreo) | "https://kumaangelica3.duckdns.org/setup" |
