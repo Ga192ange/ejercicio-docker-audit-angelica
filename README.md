@@ -2,12 +2,11 @@
 
 ## Fase 1 – Auditoría
 
-Para realizar la auditoría de seguridad del código se utilizó **Bandit**, una herramienta de análisis estático de seguridad para aplicaciones Python.
+Para realizar la auditoría de seguridad del código se utilizó Bandit, una herramienta de análisis estático de seguridad para aplicaciones Python.
 
 La auditoría se ejecutó de forma local sobre el proyecto mediante el siguiente comando:
 
-```bash
-bandit -r . -x ./venv -f txt -o auditoria_bandit.txt
+
 
 ## Tabla de auditoría
 
@@ -19,7 +18,6 @@ bandit -r . -x ./venv -f txt -o auditoria_bandit.txt
 | B201 | Flask con `debug=True` | La aplicación Flask está ejecutándose con el modo de depuración activado, lo que puede exponer información sensible. | Alta | Media | `app.py:35` | Desactivar `debug=True` en producción y utilizar `debug=False`. |
 | B104 | Aplicación enlazada a todas las interfaces | Se utiliza `host='0.0.0.0'`, permitiendo que la aplicación escuche en todas las interfaces de red. | Media | Media | `app.py:35` | Restringir la interfaz de escucha cuando no sea necesario exponer el servicio externamente. |
 | B101 | Uso de `assert` | Se detectó el uso de `assert` en las pruebas. Estas instrucciones pueden eliminarse al ejecutar Python con optimizaciones. | Baja | Alta | `test_app.py:7` | Utilizar las aserciones propias del framework de pruebas. |
-
 
 ## Resumen de la auditoría
 
@@ -39,20 +37,17 @@ bandit -r . -x ./venv -f txt -o auditoria_bandit.txt
 | Baja | 1 |
 | **Total** | **6** |
 
-## Resultado Final 
+## Resultado Final
 
-| Herramienta | Resultado                   | Problemas encontrados |
-| ----------- | --------------------------- | --------------------: |
-| Bandit      | Sin problemas identificados |                     0 |
+| Herramienta | Resultado | Problemas encontrados |
+|---|---|---:|
+| Bandit | Hallazgos documentados y evaluados | 6 |
 
-
-## Auditoría de Seguridad
+## Excepciones Aceptadas
 
 | Hallazgo | Severidad | Herramienta | Ubicación | Estado | Justificación |
 |---|---|---|---|---|---|
-| Binding a todas las interfaces (0.0.0.0) | Media | Bandit (B104) | app.py:45 | Aceptado con excepción | Necesario para exponer el servicio desde el contenedor Docker al host; el acceso real se controla vía mapeo de puertos y configuración de red/firewall |
-
-
+| Binding a todas las interfaces (0.0.0.0) | Media | Bandit (B104) | `app.py:45` | Aceptado con excepción | Necesario para exponer el servicio desde el contenedor Docker al host; el acceso real se controla vía mapeo de puertos y configuración de red/firewall |
 
 ## Enlaces del Despliegue
 
